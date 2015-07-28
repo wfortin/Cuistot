@@ -1,5 +1,5 @@
 exports.showLoginPage = function (req, res) {
-	res.send('<a href="/auth/google">Log in</a>');
+    res.send('<a href="/auth/google">Log in</a>');
 };
 
 exports.redirectToProfile = function (req, res) {
