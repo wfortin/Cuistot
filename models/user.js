@@ -1,27 +1,15 @@
 var mongoose = require('mongoose');
+var findOrCreate = require('mongoose-findorcreate');
 
 var UserSchema = new mongoose.Schema({
-  googleId: {
-    type: String
-  },
-  access_token: {
-    type: String
-  }
+    googleId: String,
+    access_token: String,
+    recipes: [{type: mongoose.Schema.ObjectId, ref: 'Recipe'}]
 });
 
-UserSchema.statics.findOrCreate = function (filters, cb) {
-  User = this;
-  this.find(filters, function (err, results) {
-    if (results.length === 0) {
-      var newUser = new User();
-      newUser.googleId = filters.googleId;
-      newUser.save(function (err, doc) {
-        cb(err, doc);
-      });
-    } else {
-      cb(err, results[0]);
-    }
-  });
+UserSchema.plugin(findOrCreate);
+UserSchema.methods.addRecipe = function (recipe) {
+    this.update({_id: this._id}, {$addToSet: {recipes: recipe._id}});
 };
 
 var User = mongoose.model('User', UserSchema);
