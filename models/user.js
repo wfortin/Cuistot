@@ -9,7 +9,8 @@ var UserSchema = new mongoose.Schema({
 
 UserSchema.plugin(findOrCreate);
 UserSchema.methods.addRecipe = function (recipe) {
-    this.update({_id: this._id}, {$addToSet: {recipes: recipe._id}});
+    var User = mongoose.model('User');
+    User.findOneAndUpdate({_id: this._id}, {$addToSet: {recipes: recipe}});
 };
 
 var User = mongoose.model('User', UserSchema);
