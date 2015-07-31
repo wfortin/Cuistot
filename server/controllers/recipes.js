@@ -1,5 +1,5 @@
-var User = require('../models/User').model;
-var Recipe = require('../models/recipes').model;
+var User = require('./user').model;
+var Recipe = require('./recipes').model;
 
 var scrape = require('html-metadata');
 
