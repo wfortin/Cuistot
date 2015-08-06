@@ -13,7 +13,4 @@ UserSchema.methods.addRecipe = function (recipe) {
     User.findOneAndUpdate({_id: this._id}, {$addToSet: {recipes: recipe}});
 };
 
-var User = mongoose.model('User', UserSchema);
-
-exports.schema = UserSchema;
-exports.model = User;
+mongoose.model('User', UserSchema);

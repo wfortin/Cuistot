@@ -1,5 +1,7 @@
-var User = require('./user').model;
-var Recipe = require('./recipes').model;
+var mongoose = require('mongoose');
+
+var User = mongoose.model('User');
+var Recipe = mongoose.model('Recipe');
 
 var scrape = require('html-metadata');
 
@@ -30,9 +32,12 @@ exports.addRecipe = function (req, res) {
             }, function (err, recipe) {
                 if (err) console.error(err);
 
-                user.addRecipe(recipe);
+                // TODO: make sure we don't add the same recipe twice
+                user.recipes.push(recipe.id);
                 user.save(function(err) {
                     if (err) console.error(err);
+
+                    console.log(user);
 
                     User.findById(user._id).populate('recipes').exec(function (err, user) {
                         if (err) console.log(err);

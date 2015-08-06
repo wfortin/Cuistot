@@ -1,9 +1,10 @@
+var mongoose = require('mongoose');
 var passport = require('passport');
 var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 var BearerStrategy = require('passport-http-bearer').Strategy;
 
-var secrets = require('secrets');
-var User = require('./User').model;
+var secrets = require('./secrets');
+var User = mongoose.model('User');
 
 passport.serializeUser(function (user, done) {
     done(null, user);

@@ -13,7 +13,4 @@ var RecipeSchema = new mongoose.Schema({
 RecipeSchema.plugin(findOrCreate);
 RecipeSchema.method('toJSON', modelHelpers.toJSON);
 
-var Recipe = mongoose.model('Recipe', RecipeSchema);
-
-exports.schema = RecipeSchema;
-exports.model = Recipe;
+mongoose.model('Recipe', RecipeSchema);
