@@ -11,6 +11,7 @@
             rgba(0, 0, 0, 0.10),
             rgba(0, 0, 0, 0.5)
     );
+    overflow: hidden;
 }
 
 .recipe h2 {

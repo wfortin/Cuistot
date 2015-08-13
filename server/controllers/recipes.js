@@ -23,16 +23,9 @@ exports.addRecipe = function (req, res) {
 
         var recipeUrl = req.body.url;
         scraper.parse(recipeUrl).then(function (context, data) {
-            console.log(data)
             Recipe.findOrCreate({
                 url: data.url
-            }, {
-                title: data.title,
-                description: data.description,
-                image: data.image,
-                ingredients: data.ingredients,
-                steps: data.steps
-            }, function (err, recipe) {
+            }, data, function (err, recipe) {
                 if (err) console.error(err);
 
                 // TODO: make sure we don't add the same recipe twice

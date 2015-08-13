@@ -20,12 +20,10 @@ app.use(cors());
 app.use(passport.initialize());
 app.use(bodyParser.json());
 
-
 app.get('/auth/google', passportConf.authenticateGoogle);
-app.get('/auth/google/callback', passportConf.authenticateGoogleCallback, userController.redirectToProfile);
+app.get('/auth/google/callback', passportConf.authenticateGoogleCallback, userController.redirectToApp);
 
-app.get('/', userController.showLoginPage);
-app.get('/profile', passportConf.authenticateBearer, userController.showProfile);
+app.get('/login', userController.showLoginPage);
 
 app.get('/recipes', passportConf.authenticateBearer,recipesController.getUserRecipes);
 app.post('/recipes', passportConf.authenticateBearer,recipesController.addRecipe);

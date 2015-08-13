@@ -9,6 +9,9 @@
     ],
     "steps": [
       "section.preparation ol li span"
+    ],
+    "tags": [
+      ".tags a"
     ]
   }
 }

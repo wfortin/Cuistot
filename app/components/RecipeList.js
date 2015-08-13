@@ -1,8 +1,10 @@
 import config from '../config';
 
 import React, { Component } from 'react';
-import Recipe from './Recipe';
 import reqwest from 'reqwest';
+
+import Recipe from './Recipe';
+import Authentication from '../src/Authentication';
 
 export default class RecipeList extends Component {
 
@@ -17,7 +19,7 @@ export default class RecipeList extends Component {
         reqwest({
             url: config.api.url + '/recipes',
             headers: {
-                'Authorization': 'Bearer ya29.vwGKePVA9rm8SrgSqeG8pyq_dNO0vEZ4QAZ-sjL4dlMvhMuvJgFVXsXjJn7K-rtllOq_'
+                'Authorization': 'Bearer ' + Authentication.getAccessToken()
             }
         }).then((recipes) => {
             this.setState({
