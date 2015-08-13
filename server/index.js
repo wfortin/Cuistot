@@ -20,6 +20,10 @@ app.use(cors());
 app.use(passport.initialize());
 app.use(bodyParser.json());
 
+app.use(express.static(__dirname + '/public'));
+app.engine('html', require('ejs').renderFile);
+app.set('views', __dirname + '/views');
+
 app.get('/auth/google', passportConf.authenticateGoogle);
 app.get('/auth/google/callback', passportConf.authenticateGoogleCallback, userController.redirectToApp);
 
