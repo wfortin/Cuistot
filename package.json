@@ -6,8 +6,8 @@
   "dependencies": {
     "cors": "^2.7.1",
     "express": "^4.13.1",
-    "html-metadata": "^1.2.1",
     "mongoose": "^4.1.0",
+    "osmosis": "0.0.8",
     "passport": "^0.2.2",
     "passport-google-oauth": "^0.2.0",
     "passport-http-bearer": "^1.0.1",

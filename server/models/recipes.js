@@ -7,7 +7,9 @@ var RecipeSchema = new mongoose.Schema({
     title: String,
     description: String,
     url: String,
-    image: String
+    image: String,
+    ingredients: [String],
+    steps: [String]
 });
 
 RecipeSchema.plugin(findOrCreate);

@@ -1,0 +1,14 @@
+{
+  "ricardocuisine.com": {
+    "url": "meta[name='og:url']@content",
+    "title": "h1",
+    "description": "meta[name='twitter:description']@content",
+    "image": "meta[name='twitter:image:src']@content",
+    "ingredients": [
+      "section.ingredients ul li span"
+    ],
+    "steps": [
+      "section.preparation ol li span"
+    ]
+  }
+}

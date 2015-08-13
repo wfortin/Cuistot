@@ -3,7 +3,7 @@ var mongoose = require('mongoose');
 var User = mongoose.model('User');
 var Recipe = mongoose.model('Recipe');
 
-var scrape = require('html-metadata');
+var scraper = require('../core/scraper');
 
 exports.getUserRecipes = function(req, res) {
     User.findById(req.user.id, function (err, user) {
@@ -22,13 +22,16 @@ exports.addRecipe = function (req, res) {
         if (err) console.error(err);
 
         var recipeUrl = req.body.url;
-        scrape(recipeUrl).then(function (metadata) {
+        scraper.parse(recipeUrl).then(function (context, data) {
+            console.log(data)
             Recipe.findOrCreate({
-                url: metadata.openGraph.url
+                url: data.url
             }, {
-                title: metadata.openGraph.title,
-                description: metadata.openGraph.description,
-                image: metadata.openGraph.image.url
+                title: data.title,
+                description: data.description,
+                image: data.image,
+                ingredients: data.ingredients,
+                steps: data.steps
             }, function (err, recipe) {
                 if (err) console.error(err);
 
