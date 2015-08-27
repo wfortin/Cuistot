@@ -15,12 +15,15 @@ export default class Authentication {
     }
 
     static parseTokenFromUrl() {
+        debugger;
         var queryString = '?' + document.URL.split('?')[1];
         var queryParameters = URI.parseQuery(queryString);
 
         var access_token = queryParameters['access_token'];
 
         if (access_token) {
+            // Clear token from url without reloading
+            window.history.pushState('', '', window.location.pathname);
             Authentication.setAccessToken(access_token);
         }
     }
