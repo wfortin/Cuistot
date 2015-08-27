@@ -7,6 +7,6 @@ import AddRecipe from './AddRecipe'
 export default (
     <Route component={App}>
         <Route path="/" component={RecipeList} />
-        <Route path="/recipes" component={AddRecipe} />
+        <Route path="/add" component={AddRecipe} />
     </Route>
 )

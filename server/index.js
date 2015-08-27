@@ -29,8 +29,8 @@ app.get('/auth/google/callback', passportConf.authenticateGoogleCallback, userCo
 
 app.get('/login', userController.showLoginPage);
 
-app.get('/recipes', passportConf.authenticateBearer,recipesController.getUserRecipes);
-app.post('/recipes', passportConf.authenticateBearer,recipesController.addRecipe);
+app.get('/recipes', passportConf.authenticateBearer, recipesController.getUserRecipes);
+app.post('/recipes', passportConf.authenticateBearer, recipesController.addRecipe);
 
 
 app.listen(3001);
